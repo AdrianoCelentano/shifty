@@ -26,19 +26,25 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   @override
   Stream<SignInFormState> mapEventToState(SignInFormEvent event) async* {
-    yield* event.map(emailChanged: (event) async* {
-      yield* emailChanged(event);
-    }, passwordChanged: (event) async* {
-      yield* passwordChanged(event);
-    }, registerWithEmailAndPasswordPressed: (event) async* {
-      yield* _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.registerWithEmailAndPassword);
-    }, signInWithEmailAndPasswordPressed: (event) async* {
-      yield* _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.signInWithEmailAndPassword);
-    }, signInWithGooglePressed: (event) async* {
-      yield* signInWithGoogle();
-    });
+    yield* event.map(
+      emailChanged: (event) async* {
+        yield* emailChanged(event);
+      },
+      passwordChanged: (event) async* {
+        yield* passwordChanged(event);
+      },
+      registerWithEmailAndPasswordPressed: (event) async* {
+        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+            _authFacade.registerWithEmailAndPassword);
+      },
+      signInWithEmailAndPasswordPressed: (event) async* {
+        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+            _authFacade.signInWithEmailAndPassword);
+      },
+      signInWithGooglePressed: (event) async* {
+        yield* signInWithGoogle();
+      },
+    );
   }
 
   Stream<SignInFormState> signInWithGoogle() async* {
