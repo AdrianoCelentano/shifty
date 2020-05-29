@@ -22,7 +22,9 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormBloc(this._authFacade);
 
   @override
-  SignInFormState get initialState => SignInFormState.initial();
+  SignInFormState get initialState {
+    return SignInFormState.initial();
+  }
 
   @override
   Stream<SignInFormState> mapEventToState(SignInFormEvent event) async* {

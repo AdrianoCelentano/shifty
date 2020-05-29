@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shifty/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:shifty/domain/auth/iauth_facade.dart';
+import 'package:shifty/presentation/sign_in/widget/sign_in_form_animation.dart';
 import 'package:shifty/application/sign_in_form_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -20,6 +21,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => firebaseInjectableModule.googleSignIn);
   g.registerLazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
+  g.registerFactory<SignInFormAnimation>(() => SignInFormAnimation());
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
 }
 
